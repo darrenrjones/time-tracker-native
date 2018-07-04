@@ -33,6 +33,9 @@ export class ListView extends React.Component{
 
   handleItemPress = (name,time) => {
     console.log('item ppressed');
+    console.log('name from listTouch: ', name);
+    console.log('time from listTouch: ', time);
+    
     this.props.dispatch(populateTimer(name,time));  
   }
 
@@ -61,10 +64,11 @@ export class ListView extends React.Component{
           this.props.list.map((item, i) => (
           <TouchableOpacity
             key={i}
-            style={styles.listItem}
+            style={styles.timerList}
             onPress={() => this.handleItemPress(item.name,item.time)}
           >
-            <Text>{item.name} {item.time}</Text>
+            <Text style={styles.listItemName}>{item.name}</Text>
+            <Text style={styles.listItemTime}>{item.time}</Text>
           </ TouchableOpacity>
           ))
         }
@@ -89,5 +93,20 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#ffffff',
   },
+  timerList: {
+    backgroundColor: 'pink',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    maxWidth: "75%",
+    marginLeft: "12.5%",
+    padding: 10
+  },
+  listItemName: {
+    fontSize: 18
+  },
+  listItemTime:{
+    fontSize: 18
+
+  }
 
 });

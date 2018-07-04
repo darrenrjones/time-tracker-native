@@ -46,6 +46,8 @@ export class clockList extends React.Component {
         <SingleClock 
           startTime={this.startTime}
           stopTime={this.stopTime}
+          name={this.props.name}
+          time={Number(this.props.time)}
 
         />
         

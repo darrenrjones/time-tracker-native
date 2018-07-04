@@ -18,9 +18,7 @@ const initialState = {
       time: 259,
       status: false
     }
-  ],
-  status: false,
-  time: 3999,
+  ]
 };
 
 export default function mainReducer(state=initialState, action) {
@@ -54,8 +52,7 @@ export default function mainReducer(state=initialState, action) {
   }
   if (action.type === POPULATE_TIMER){
     return {
-      ...state, 
-      list: [...state.list,{name: action.name, time: action.time, status: false}]     
+      ...state,          
     }
   }
 

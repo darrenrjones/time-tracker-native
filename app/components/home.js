@@ -33,7 +33,10 @@ class Home extends Component {
       />
 
         <ListView/>
-        <ClockList />
+        {/* <ClockList 
+          name='examamamm'
+          time='59'
+        /> */}
       </View>
     )
 
