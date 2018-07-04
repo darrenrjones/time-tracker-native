@@ -3,7 +3,7 @@ import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, EXAMPLE } from '../actions';
 const initialState = {
   list: [],
   status: false,
-  time: 3332343,
+  time: 3999,
 };
 
 export default function mainReducer(state=initialState, action) {

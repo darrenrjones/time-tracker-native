@@ -47,12 +47,12 @@ class SingleClock extends Component {
         
         <ClockButton 
           name={"Start"}
-          click={this.props.exampleFunction}
+          click={this.props.startTime}
         />
 
         <ClockButton 
           name={"Stop"}
-          click={this.props.exampleFunction}
+          click={this.props.stopTime}
         />
   
 

@@ -12,10 +12,12 @@ import {
 
 export class clockList extends React.Component {
 
-  async startTime() {
+
+  startTime = async () => {
     await this.props.dispatch(toggleStatus()); 
-    this.runTime();   
+    this.runTime(); 
   }
+
   runTime(){
     if(this.props.status === true){      
       setTimeout(() => {  
@@ -42,8 +44,9 @@ export class clockList extends React.Component {
       <View>
 
         <SingleClock 
-          exampleFunction={this.exampleFunction}
-        
+          startTime={this.startTime}
+          stopTime={this.stopTime}
+
         />
 
       </View>
@@ -52,8 +55,8 @@ export class clockList extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  status: state.status
-
+  status: state.mainReducer.status,
+  time: state.mainReducer.time
 });
 
 export default connect(mapStateToProps)(clockList);
