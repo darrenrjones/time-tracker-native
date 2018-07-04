@@ -4,8 +4,16 @@ const initialState = {
   
   list: [
     {
-      name: "clockOne",
+      name: "clock One",
       time: 59
+    },
+    {
+      name: "clock Two",
+      time: 159
+    },
+    {
+      name: "clock Three",
+      time: 259
     }
   ],
   status: false,

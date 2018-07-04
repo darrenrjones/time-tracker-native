@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { View, StyleSheet, Button, TouchableOpacity, } from 'react-native';
 
@@ -13,25 +14,12 @@ const newClockInput = t.struct({
 });
 
 handleFormSubmit = () => {
-  console.log('form submitted');
-  
+  console.log('form submitted');  
 }
 
 handleItemPress = () => {
-  console.log('item ppressed');
-  
+  console.log('item ppressed');  
 }
-
-const clockList = [
-  {
-    name:"trashClock",
-    time: 119
-  },
-  {
-    name:"twotwo",
-    time: 599
-  },
-]
 
 export class ListView extends React.Component{
 
@@ -50,7 +38,7 @@ export class ListView extends React.Component{
 
         <List containerStyle={{marginBottom: 20}}>
         {
-          clockList.map((item, i) => (
+          this.props.list.map((item, i) => (
           <TouchableOpacity
             key={i}
             style={styles.listItem}
@@ -59,7 +47,7 @@ export class ListView extends React.Component{
             <Text>{item.name} {item.time}</Text>
           </ TouchableOpacity>
           ))
-          }
+        }
         </List>    
 
       </View>
@@ -67,7 +55,13 @@ export class ListView extends React.Component{
   }
 }
 
-export default ListView;
+const mapStateToProps = state => ({
+  time: state.mainReducer.time,
+  status: state.mainReducer.status,
+  list: state.mainReducer.list,
+});
+
+export default connect(mapStateToProps)(ListView);
 
 const styles = StyleSheet.create({
   inputContainer: {
