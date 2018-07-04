@@ -19,6 +19,7 @@ const clockButton = props => {
 };
 
 export default clockButton;
+
 const styles = StyleSheet.create({
 
 })

@@ -10,6 +10,7 @@ import {
 
 import { connect } from 'react-redux';
 import ClockList from './clockList';
+import ListView from './listView';
 
 import * as Actions from '../actions'; //Import your actions
 import { Header } from 'react-native-elements';
@@ -30,7 +31,8 @@ class Home extends Component {
         centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 22 } }}
         rightComponent={{ icon: 'home', color: '#fff' }}
       />
-        <ClockList />
+        <ListView/>
+        {/* <ClockList /> */}
       </View>
     )
 

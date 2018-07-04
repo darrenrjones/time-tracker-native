@@ -1,7 +1,13 @@
 import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, EXAMPLE } from '../actions';
 
 const initialState = {
-  list: [],
+  
+  list: [
+    {
+      name: "clockOne",
+      time: 59
+    }
+  ],
   status: false,
   time: 3999,
 };

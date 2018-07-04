@@ -26,11 +26,11 @@ export class clockList extends React.Component {
       }, 1000);
     }
   }
-  stopTime(){
+  stopTime = () =>{
     this.props.dispatch(toggleStatus());
   }
 
-  addStopwatch(){
+  addStopwatch = () => {
     this.props.dispatch(addStopwatch());
   }
 
@@ -48,6 +48,7 @@ export class clockList extends React.Component {
           stopTime={this.stopTime}
 
         />
+        
 
       </View>
     );
