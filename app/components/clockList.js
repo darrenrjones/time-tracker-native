@@ -32,17 +32,19 @@ export class clockList extends React.Component {
     this.props.dispatch(addStopwatch());
   }
 
+  exampleFunction = () => {
+    console.log('button presseed!!!!');    
+  }  
+
 
   render(){
     return(
       <View>
-        {/* <Button 
-          onPress={() => this.addStopwatch()}
-          title="Create Stopwatch"
-          color="green"
-          accessibilityLabel="button to create another watch"
-        /> */}
-        <SingleClock />
+
+        <SingleClock 
+          exampleFunction={this.exampleFunction}
+        
+        />
 
       </View>
     );

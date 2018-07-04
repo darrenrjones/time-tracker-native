@@ -1,4 +1,4 @@
-import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS } from '../actions';
+import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, EXAMPLE } from '../actions';
 
 const initialState = {
   list: [],
@@ -24,6 +24,12 @@ export default function mainReducer(state=initialState, action) {
     return {
       ...state,
       status: !state.status
+    }
+  }
+  if (action.type === EXAMPLE){
+    console.log('EXAMPLE : ', state.time);
+    return {
+      ...state,      
     }
   }
 

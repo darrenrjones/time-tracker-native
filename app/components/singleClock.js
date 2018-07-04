@@ -3,15 +3,14 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    FlatList,
-    View,
-    Text,    
+    View, 
 } from 'react-native';
 
-import { connect } from 'react-redux';
+import { connect} from 'react-redux';
 
-import { Button } from 'react-native-elements';
+import { Button, Text } from 'react-native-elements';
 
+import ClockButton from './clockButton';
 
 
 class SingleClock extends Component {
@@ -34,27 +33,28 @@ class SingleClock extends Component {
     return Math.floor(this.props.time /60 /60).toLocaleString('en')    
   }  
 
-    
+
   render(){
 
     return(
-      <View style={styles.timeDisplay}>
 
-        <Text>Stopwatch</Text>
+      <View style={styles.timeDisplay}>
+        <Text h4>Stopwatch</Text>
 
         <Text >
           {this.getHours()}:{this.getMinutes()}:{this.getSeconds()}
         </Text>
         
-            <Button 
-            title='Start'
-            disabled={this.props.status} 
-            onPress={() => this.props.startTime()}
-            
-            />
-            
-            {/* <button disabled={!this.props.status} id="stop" className="buttons" onClick={() => this.props.stopTime()}>stop</button>
-            <button id="reset" className="buttons">reset</button> */}
+        <ClockButton 
+          name={"Start"}
+          click={this.props.exampleFunction}
+        />
+
+        <ClockButton 
+          name={"Stop"}
+          click={this.props.exampleFunction}
+        />
+  
 
 
       </View>
@@ -74,9 +74,30 @@ export default connect(mapStateToProps)(SingleClock);
 const styles = StyleSheet.create({
 
   timeDisplay: {
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    padding: 20,
+    maxWidth: "50%",
     backgroundColor: "pink",
-    borderWidth: 1,
+    borderWidth: 3,
     borderColor: "green",
-    borderRadius:4
+    borderRadius:4,
+    marginLeft: "25%",
+    marginTop: "25%",
+  },
+  button: {
+
+  },
+  touchable: {
+    height: 40,
+    margin: 10,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius:4,
+    maxWidth: "33%",    
+  },
+  touchableText: {
+    fontSize: 16,
+    
   }
 })
