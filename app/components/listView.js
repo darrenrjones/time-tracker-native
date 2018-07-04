@@ -6,7 +6,7 @@ import { View, StyleSheet, Button, TouchableOpacity, } from 'react-native';
 import { Text, List, ListItem } from 'react-native-elements';
 
 import t from 'tcomb-form-native';
-import { createNewTimer } from '../actions';
+import { createNewTimer, populateTimer } from '../actions';
 
 const Form = t.form.Form;
 
@@ -26,17 +26,14 @@ export class ListView extends React.Component{
   handleCreateNewTimer = () => {
     console.log("handleCreateNewTimer clicked");
     const value = this._form.getValue();
-    // console.log('value from form: ', value.CreateNewTimer);
-    
-    this.props.dispatch(createNewTimer(value.CreateNewTimer));
-    console.log(this.props.list);
-    
+    if(value){
+      this.props.dispatch(createNewTimer(value.CreateNewTimer));  
+    }    
   }
 
-  handleItemPress = () => {
+  handleItemPress = (name,time) => {
     console.log('item ppressed');
-    console.log('printed from elswhere',this.props.list);
-  
+    this.props.dispatch(populateTimer(name,time));  
   }
 
   render(){
@@ -65,7 +62,7 @@ export class ListView extends React.Component{
           <TouchableOpacity
             key={i}
             style={styles.listItem}
-            onPress={this.handleItemPress}
+            onPress={() => this.handleItemPress(item.name,item.time)}
           >
             <Text>{item.name} {item.time}</Text>
           </ TouchableOpacity>

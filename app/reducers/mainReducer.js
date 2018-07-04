@@ -1,19 +1,22 @@
-import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER } from '../actions';
+import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER, POPULATE_TIMER } from '../actions';
 
 const initialState = {
   
   list: [
     {
       name: "clock One",
-      time: 59
+      time: 59,
+      status: false
     },
     {
       name: "clock Two",
-      time: 159
+      time: 159,
+      status: false
     },
     {
       name: "clock Three",
-      time: 259
+      time: 259,
+      status: false
     }
   ],
   status: false,
@@ -46,7 +49,13 @@ export default function mainReducer(state=initialState, action) {
 
     return {
       ...state, 
-      list: [...state.list,{name: action.name, time: 0}]     
+      list: [...state.list,{name: action.name, time: 0, status: false}]     
+    }
+  }
+  if (action.type === POPULATE_TIMER){
+    return {
+      ...state, 
+      list: [...state.list,{name: action.name, time: action.time, status: false}]     
     }
   }
 

@@ -31,8 +31,9 @@ class Home extends Component {
         centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 22 } }}
         rightComponent={{ icon: 'home', color: '#fff' }}
       />
+
         <ListView/>
-        {/* <ClockList /> */}
+        <ClockList />
       </View>
     )
 

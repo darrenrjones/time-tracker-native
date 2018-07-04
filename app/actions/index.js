@@ -18,3 +18,10 @@ export const createNewTimer = (name) => ({
     type: CREATE_NEW_TIMER,
     name   
 });
+
+export const POPULATE_TIMER = 'POPULATE_TIMER';
+export const populateTimer = (name,time) => ({
+    type: POPULATE_TIMER,
+    name,
+    time   
+});
