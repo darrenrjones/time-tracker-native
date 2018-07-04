@@ -13,7 +13,8 @@ export const toggleStatus = () => ({
     type: TOGGLE_STATUS,   
 });
 
-export const EXAMPLE = 'EXAMPLE';
-export const example = () => ({
-    type: EXAMPLE,   
+export const CREATE_NEW_TIMER = 'CREATE_NEW_TIMER';
+export const createNewTimer = (name) => ({
+    type: CREATE_NEW_TIMER,
+    name   
 });

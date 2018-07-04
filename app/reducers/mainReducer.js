@@ -1,4 +1,4 @@
-import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, EXAMPLE } from '../actions';
+import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER } from '../actions';
 
 const initialState = {
   
@@ -40,10 +40,13 @@ export default function mainReducer(state=initialState, action) {
       status: !state.status
     }
   }
-  if (action.type === EXAMPLE){
-    console.log('EXAMPLE : ', state.time);
+  if (action.type === CREATE_NEW_TIMER){
+    console.log('timer created : ', action.name);
+    console.log('list from in mainReducer before return: ',state.list);
+
     return {
-      ...state,      
+      ...state, 
+      list: [...state.list,{name: action.name, time: 0}]     
     }
   }
 
