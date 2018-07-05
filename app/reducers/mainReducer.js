@@ -1,4 +1,4 @@
-import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER, POPULATE_TIMER, TOGGLE_VIEW } from '../actions';
+import { START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER, POPULATE_TIMER, TOGGLE_VIEW, SET_STATUS_FALSE } from '../actions';
 
 const initialState = {
   
@@ -49,7 +49,7 @@ export default function mainReducer(state=initialState, action) {
   }
 
   if (action.type === TOGGLE_STATUS){
-    console.log('status toggled : ', !state.status);
+    console.log('status before TOGGLE_STATUS return : ', state.currentClock.status);
     return {
       ...state,
       currentClock: {...state.currentClock, status: !state.currentClock.status}
@@ -58,7 +58,6 @@ export default function mainReducer(state=initialState, action) {
 
   if (action.type === CREATE_NEW_TIMER){
     console.log('timer created : ', action.name);
-    console.log('list from in mainReducer before return: ',state.list);
     return {
       ...state, 
       list: [...state.list,{name: action.name, time: 0}]     
@@ -66,7 +65,7 @@ export default function mainReducer(state=initialState, action) {
   }
 
   if (action.type === POPULATE_TIMER){
-    console.log(action.name,action.time);    
+    // console.log(action.name,action.time);    
     return {
       ...state, 
       currentClock: 

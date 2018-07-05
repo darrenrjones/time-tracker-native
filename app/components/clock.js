@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SingleClock from './singleClock';
-import { addStopwatch, startTime, toggleStatus } from '../actions';
+import { startTime, toggleStatus } from '../actions';
 
 import {
   StyleSheet,
@@ -29,15 +29,6 @@ export class Clock extends React.Component {
   stopTime = () =>{
     this.props.dispatch(toggleStatus());
   }
-
-  addStopwatch = () => {
-    this.props.dispatch(addStopwatch());
-  }
-
-  exampleFunction = () => {
-    console.log('button presseed!!!!');    
-  }  
-
 
   render(){
     return(

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { View, StyleSheet, Button, TouchableOpacity, } from 'react-native';
 
-import { Text, List, ListItem } from 'react-native-elements';
+import { Text, List, } from 'react-native-elements';
 
 import t from 'tcomb-form-native';
 import { createNewTimer, populateTimer, toggleView } from '../actions';

@@ -1,9 +1,8 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
 
-import {
-    StyleSheet,         
+import {             
     Button,        
 } from 'react-native';
 
@@ -13,14 +12,10 @@ const clockButton = props => {
     <Button       
       title={props.name}       
       onPress={props.click} 
-      // disabled={props.disabled}     
+      disabled={props.disabled}     
     /> 
 
   )
 };
 
 export default clockButton;
-
-const styles = StyleSheet.create({
-
-})
