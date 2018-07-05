@@ -12,7 +12,8 @@ const clockButton = props => {
 
     <Button       
       title={props.name}       
-      onPress={props.click}      
+      onPress={props.click} 
+      disabled={props.disabled}     
     /> 
 
   )

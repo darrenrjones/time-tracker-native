@@ -49,11 +49,13 @@ class SingleClock extends Component {
         <ClockButton 
           name={"Start"}
           click={this.props.startTime}
+          disabled={this.props.currentClock.status}
         />
 
         <ClockButton 
           name={"Stop"}
           click={this.props.stopTime}
+          disabled={!this.props.currentClock.status}
         />
   
 

@@ -31,6 +31,13 @@ class Home extends Component {
         rightComponent={{ 
           icon: 'home', 
           color: '#fff', 
+          underlayColor: '#64b5f6',
+          // onPress: () => {
+          //   if(!this.props.currentClock.name === ""){
+          //     this.props.dispatch(Actions.toggleView());
+          //   }
+          // }
+
           onPress: () => this.props.dispatch(Actions.toggleView())
         
         }}
@@ -43,13 +50,12 @@ class Home extends Component {
 
   }
 }
-function mapStateToProps(state, props) {
-  return {
-    
-  }
-}
+const mapStateToProps = state => ({
+  list: state.mainReducer.list,
+  currentClock: state.mainReducer.currentClock
+});
 
-export default connect()(Home);
+export default connect(mapStateToProps)(Home);
 
 const styles = StyleSheet.create({
 
