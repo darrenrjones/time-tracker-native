@@ -59,8 +59,7 @@ export class clockList extends React.Component {
 }
 const mapStateToProps = state => ({
   list: state.mainReducer.list,
-  status: state.mainReducer.status,
-  time: state.mainReducer.time
+  currentClock: state.mainReducer.currentClock.status,
 });
 
 export default connect(mapStateToProps)(clockList);

@@ -45,7 +45,6 @@ export default function mainReducer(state=initialState, action) {
       ...state,
       currentClock: {...state.currentClock, time: state.currentClock.time + 1},
       list
-
     }
   }
 
@@ -53,7 +52,7 @@ export default function mainReducer(state=initialState, action) {
     console.log('status toggled : ', !state.status);
     return {
       ...state,
-      status: !state.status
+      currentClock: {...state.currentClock, status: !state.currentClock.status}
     }
   }
 
@@ -62,7 +61,7 @@ export default function mainReducer(state=initialState, action) {
     console.log('list from in mainReducer before return: ',state.list);
     return {
       ...state, 
-      list: [...state.list,{name: action.name, time: 0, status: false}]     
+      list: [...state.list,{name: action.name, time: 0}]     
     }
   }
 

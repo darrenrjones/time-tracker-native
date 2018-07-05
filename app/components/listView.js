@@ -86,6 +86,7 @@ export class ListView extends React.Component{
           <ClockList 
             name={this.props.currentClock.name}
             time={this.props.currentClock.time}
+            status={this.props.currentClock.status}
           />          
         </View>        
       )

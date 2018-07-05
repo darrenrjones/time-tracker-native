@@ -38,7 +38,9 @@ class Home extends Component {
           //   }
           // }
 
-          onPress: () => this.props.dispatch(Actions.toggleView())
+          onPress: () => {
+            this.props.dispatch(Actions.toggleView())
+          }
         
         }}
       />
