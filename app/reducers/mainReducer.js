@@ -5,18 +5,15 @@ const initialState = {
   list: [
     {
       name: "clock One",
-      time: 3599,
-      status: false
+      time: 3599
     },
     {
       name: "clock Two",
-      time: 159,
-      status: false
+      time: 159
     },
     {
       name: "clock Three",
-      time: 259,
-      status: false
+      time: 259
     }
   ],
   clockView: false,
