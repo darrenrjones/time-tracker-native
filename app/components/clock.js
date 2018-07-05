@@ -10,7 +10,7 @@ import {
   Text,    
 } from 'react-native';
 
-export class clockList extends React.Component {
+export class Clock extends React.Component {
 
 
   startTime = async () => {
@@ -48,21 +48,16 @@ export class clockList extends React.Component {
           stopTime={this.stopTime}
           name={this.props.name}
           time={Number(this.props.time)}
-
-        />
-        
+        />        
 
       </View>
     );
 
   }
 }
-const mapStateToProps = state => ({
-  list: state.mainReducer.list,
-  currentClock: state.mainReducer.currentClock.status,
-});
 
-export default connect(mapStateToProps)(clockList);
+
+export default connect()(Clock);
 
 const styles = StyleSheet.create({
 

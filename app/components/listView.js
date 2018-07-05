@@ -8,7 +8,7 @@ import { Text, List, ListItem } from 'react-native-elements';
 import t from 'tcomb-form-native';
 import { createNewTimer, populateTimer, toggleView } from '../actions';
 
-import ClockList from './clockList';
+import Clock from './clock';
 
 
 const Form = t.form.Form;
@@ -83,7 +83,7 @@ export class ListView extends React.Component{
     if(this.props.clockView){
       clockRender = (
         <View style={styles.listViewContainer}>
-          <ClockList 
+          <Clock
             name={this.props.currentClock.name}
             time={this.props.currentClock.time}
             status={this.props.currentClock.status}
