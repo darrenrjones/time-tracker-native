@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import ClockList from './clockList';
 import ListView from './listView';
 
 import * as Actions from '../actions'; //Import your actions
@@ -29,14 +28,16 @@ class Home extends Component {
       <Header
         // leftComponent={{ icon: 'menu', color: '#fff' }}
         centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 22 } }}
-        rightComponent={{ icon: 'home', color: '#fff' }}
+        rightComponent={{ 
+          icon: 'home', 
+          color: '#fff', 
+          onPress: () => this.props.dispatch(Actions.toggleView())
+        
+        }}
       />
 
         <ListView/>
-        {/* <ClockList 
-          name='examamamm'
-          time='59'
-        /> */}
+        
       </View>
     )
 

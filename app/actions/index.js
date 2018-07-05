@@ -25,3 +25,8 @@ export const populateTimer = (name,time) => ({
     name,
     time   
 });
+
+export const TOGGLE_VIEW = 'TOGGLE_VIEW';
+export const toggleView = () => ({
+    type: TOGGLE_VIEW       
+});

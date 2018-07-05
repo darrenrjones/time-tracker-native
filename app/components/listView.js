@@ -6,7 +6,10 @@ import { View, StyleSheet, Button, TouchableOpacity, } from 'react-native';
 import { Text, List, ListItem } from 'react-native-elements';
 
 import t from 'tcomb-form-native';
-import { createNewTimer, populateTimer } from '../actions';
+import { createNewTimer, populateTimer, toggleView } from '../actions';
+
+import ClockList from './clockList';
+
 
 const Form = t.form.Form;
 
@@ -28,22 +31,22 @@ export class ListView extends React.Component{
     const value = this._form.getValue();
     if(value){
       this.props.dispatch(createNewTimer(value.CreateNewTimer));  
-    }    
+    }        
   }
 
   handleItemPress = (name,time) => {
     console.log('item ppressed');
-    console.log('name from listTouch: ', name);
-    console.log('time from listTouch: ', time);
-    
-    this.props.dispatch(populateTimer(name,time));  
+
+    this.props.dispatch(toggleView());
+    this.props.dispatch(populateTimer(name,time));      
   }
 
   render(){
-    return(
-      <View style={styles.listViewContainer}>
 
-
+    let menuRender;
+    if(!this.props.clockView){
+      menuRender = (
+        <View style={styles.listViewContainer}>
 
         <View style={styles.inputContainer}>
           <Form 
@@ -56,8 +59,6 @@ export class ListView extends React.Component{
             onPress={this.handleCreateNewTimer}
           />  
         </View>
-
-
 
         <List containerStyle={{marginBottom: 20}}>
         {
@@ -72,17 +73,39 @@ export class ListView extends React.Component{
           </ TouchableOpacity>
           ))
         }
-        </List>    
+        </List>            
+
+      </View>
+      )
+    }
+
+    let clockRender;
+    if(this.props.clockView){
+      clockRender = (
+        <View style={styles.listViewContainer}>
+          <ClockList 
+            name='examamamm'
+            time='59'
+          />          
+        </View>        
+      )
+    }
+
+    return(
+      <View>
+
+        {menuRender}
+
+        {clockRender}        
 
       </View>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  time: state.mainReducer.time,
-  status: state.mainReducer.status,
+const mapStateToProps = state => ({  
   list: state.mainReducer.list,
+  clockView: state.mainReducer.clockView
 });
 
 export default connect(mapStateToProps)(ListView);

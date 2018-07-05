@@ -1,4 +1,4 @@
-import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER, POPULATE_TIMER } from '../actions';
+import { ADD_STOPWATCH, START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER, POPULATE_TIMER, TOGGLE_VIEW } from '../actions';
 
 const initialState = {
   
@@ -18,7 +18,9 @@ const initialState = {
       time: 259,
       status: false
     }
-  ]
+  ],
+  clockView: false
+
 };
 
 export default function mainReducer(state=initialState, action) {
@@ -54,6 +56,14 @@ export default function mainReducer(state=initialState, action) {
     return {
       ...state,          
     }
+  }
+  if (action.type === TOGGLE_VIEW){
+    return{
+      ...state,
+      clockView: !state.clockView
+    }
+
+    
   }
 
   return state;
