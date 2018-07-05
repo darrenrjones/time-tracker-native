@@ -84,8 +84,8 @@ export class ListView extends React.Component{
       clockRender = (
         <View style={styles.listViewContainer}>
           <ClockList 
-            name='examamamm'
-            time='59'
+            name={this.props.currentClock.name}
+            time={this.props.currentClock.time}
           />          
         </View>        
       )
@@ -105,7 +105,9 @@ export class ListView extends React.Component{
 
 const mapStateToProps = state => ({  
   list: state.mainReducer.list,
-  clockView: state.mainReducer.clockView
+  clockView: state.mainReducer.clockView,
+  currentClock: state.mainReducer.currentClock,
+
 });
 
 export default connect(mapStateToProps)(ListView);

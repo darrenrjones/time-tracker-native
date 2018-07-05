@@ -1,7 +1,3 @@
-export const ADD_STOPWATCH = 'ADD_STOPWATCH';
-export const addStopwatch = () => ({
-    type: ADD_STOPWATCH,   
-});
 
 export const START_TIME = 'START_TIME';
 export const startTime = () => ({

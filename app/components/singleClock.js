@@ -17,11 +17,11 @@ class SingleClock extends Component {
 
 
   getSeconds = () => {
-    return ('0' + this.props.time % 60).slice(-2);
+    return ('0' + this.props.currentClock.time % 60).slice(-2);
   }
 
   getMinutes = () => {
-    let min = Math.floor(this.props.time / 60) % 60
+    let min = Math.floor(this.props.currentClock.time / 60) % 60
     if(min.toString().length < 2){
       return '0' + min;
     } else {
@@ -30,7 +30,7 @@ class SingleClock extends Component {
   }
 
   getHours = () => {
-    return Math.floor(this.props.time /60 /60).toLocaleString('en')    
+    return Math.floor(this.props.currentClock.time /60 /60).toLocaleString('en')    
   }  
 
 
@@ -40,7 +40,7 @@ class SingleClock extends Component {
 
       <View style={styles.timeDisplay}>
 
-        <Text h4>{this.props.name}</Text>
+        <Text h4>{this.props.currentClock.name}</Text>
 
         <Text >
           {this.getHours()}:{this.getMinutes()}:{this.getSeconds()}
@@ -66,7 +66,8 @@ class SingleClock extends Component {
 }
 
 const mapStateToProps = state => ({
-  list: state.mainReducer.list
+  list: state.mainReducer.list,
+  currentClock: state.mainReducer.currentClock
 });
 
 export default connect(mapStateToProps)(SingleClock);
