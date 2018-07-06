@@ -6,8 +6,8 @@ Long Press on a timer in the list to delete.
 
 ### Screenshots
 
-![timer screen](screenshots/timer.png){:height="50%" width="50%"}
+<img src="screenshots/main.png" width="50%">
 
-![delete view](screenshots/delete.png){:height="50%" width="50%"}
+<img src="screenshots/timer.png" width="50%">
 
-<img  src="screenshots/main.png" width="50%">
+<img src="screenshots/delete.png" width="50%">
