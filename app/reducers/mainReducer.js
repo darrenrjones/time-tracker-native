@@ -28,7 +28,7 @@ const initialState = {
 export default function mainReducer(state=initialState, action) {
 
   if (action.type === START_TIME){
-    console.log('timer ticked');
+    // console.log('timer ticked');
     const list = state.list.map(item => {
       if(item.name === state.currentClock.name){
         return {
@@ -49,7 +49,7 @@ export default function mainReducer(state=initialState, action) {
   }
 
   if (action.type === TOGGLE_STATUS){
-    console.log('status before TOGGLE_STATUS return : ', state.currentClock.status);
+    // console.log('status before TOGGLE_STATUS return : ', state.currentClock.status);
     return {
       ...state,
       currentClock: {...state.currentClock, status: !state.currentClock.status}
@@ -57,7 +57,7 @@ export default function mainReducer(state=initialState, action) {
   }
 
   if (action.type === CREATE_NEW_TIMER){
-    console.log('timer created : ', action.name);
+    // console.log('timer created : ', action.name);
     return {
       ...state, 
       list: [...state.list,{name: action.name, time: 0}]     

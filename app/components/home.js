@@ -17,23 +17,23 @@ class Home extends Component {
   render(){
     return(
       <View style={styles.thingy}>
-      <Header
-        centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 22 } }}
-        rightComponent={{ 
-          icon: 'home', 
-          color: '#fff',
-          size: 32, 
-          underlayColor: '#64b5f6',
-          disabled: this.props.currentClock.status,
-          onPress: () => {
-            if(this.props.clockView){
-              this.props.dispatch(Actions.toggleView());
-            }
-          },
+        <Header
+          centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 22 } }}
+          rightComponent={{ 
+            icon: 'home', 
+            color: '#fff',
+            size: 32, 
+            underlayColor: '#64b5f6',
+            disabled: this.props.currentClock.status,
+            onPress: () => {
+              if(this.props.clockView){
+                this.props.dispatch(Actions.toggleView());
+              }
+            },
+            
           
-        
-        }}
-      />
+          }}
+        />
 
         <ListView/>
         

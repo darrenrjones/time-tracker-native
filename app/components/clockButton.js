@@ -3,13 +3,13 @@
 import React from 'react';
 
 import {             
-    Button,        
+    Button,
 } from 'react-native';
 
 const clockButton = props => {
   return (
 
-    <Button       
+    <Button           
       title={props.name}       
       onPress={props.click} 
       disabled={props.disabled}     
@@ -19,3 +19,4 @@ const clockButton = props => {
 };
 
 export default clockButton;
+

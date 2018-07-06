@@ -27,7 +27,7 @@ const options = {
 export class ListView extends React.Component{
 
   handleCreateNewTimer = () => {
-    console.log("handleCreateNewTimer clicked");
+    // console.log("handleCreateNewTimer clicked");
     const value = this._form.getValue();
     if(value){
       this.props.dispatch(createNewTimer(value.CreateNewTimer));  
@@ -35,11 +35,12 @@ export class ListView extends React.Component{
   }
 
   handleItemPress = (name,time) => {
-    console.log('item ppressed');
+    // console.log('item ppressed');
 
     this.props.dispatch(toggleView());
     this.props.dispatch(populateTimer(name,time));      
   }
+  
 
   render(){
 
@@ -48,34 +49,36 @@ export class ListView extends React.Component{
       menuRender = (
         <View style={styles.listViewContainer}>
 
-        <View style={styles.inputContainer}>
-          <Form 
-            type={newClockInput}
-            ref={userInput => this._form = userInput}
-            options={options}
-          />   
-          <Button
-            title='Create'
-            onPress={this.handleCreateNewTimer}
-          />  
+          <View style={styles.inputContainer}>
+            <Form 
+              type={newClockInput}
+              ref={userInput => this._form = userInput}
+              options={options}
+            />   
+            <Button
+              title='Create'
+              onPress={this.handleCreateNewTimer}
+            />  
+          </View>
+
+          <List containerStyle={{marginBottom: 20}}>
+          {
+            this.props.list.map((item, i) => (
+            <TouchableOpacity
+              key={i}
+              style={styles.timerListItem}
+              onPress={() => this.handleItemPress(item.name,item.time)}
+            >
+              <Text style={styles.listItemName}>{item.name}</Text>
+              <Text style={styles.listItemTime}>{
+                `${Math.floor(item.time /60 /60).toLocaleString('en')}:${Math.floor(item.time / 60) % 60}:${('0' + item.time % 60).slice(-2)}`
+              }</Text>
+            </ TouchableOpacity>
+            ))
+          }
+          </List>            
+
         </View>
-
-        <List containerStyle={{marginBottom: 20}}>
-        {
-          this.props.list.map((item, i) => (
-          <TouchableOpacity
-            key={i}
-            style={styles.timerList}
-            onPress={() => this.handleItemPress(item.name,item.time)}
-          >
-            <Text style={styles.listItemName}>{item.name}</Text>
-            <Text style={styles.listItemTime}>{item.time}</Text>
-          </ TouchableOpacity>
-          ))
-        }
-        </List>            
-
-      </View>
       )
     }
 
@@ -94,11 +97,8 @@ export class ListView extends React.Component{
 
     return(
       <View>
-
         {menuRender}
-
-        {clockRender}        
-
+        {clockRender}   
       </View>
     )
   }
@@ -119,13 +119,15 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#ffffff',
   },
-  timerList: {
+  timerListItem: {
     backgroundColor: 'pink',
     flexDirection: 'row',
     justifyContent: 'space-between',
     maxWidth: "75%",
     marginLeft: "12.5%",
-    padding: 10
+    padding: 10,
+    marginBottom: 5,
+    marginTop: 5
   },
   listItemName: {
     fontSize: 18

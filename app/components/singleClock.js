@@ -30,7 +30,12 @@ class SingleClock extends Component {
   }
 
   getHours = () => {
-    return Math.floor(this.props.currentClock.time /60 /60).toLocaleString('en')    
+    let hour = Math.floor(this.props.currentClock.time /60 /60).toLocaleString('en');
+    if ( hour.toString().length < 2){
+      return '0' + hour;
+    } else {
+      return hour;
+    }
   }  
 
 
@@ -38,11 +43,11 @@ class SingleClock extends Component {
 
     return(
 
-      <View style={styles.timeDisplay}>
+      <View style={styles.clockDisplay}>
 
-        <Text h4>{this.props.currentClock.name}</Text>
+        <Text h4 style={styles.title}>{this.props.currentClock.name}</Text>
 
-        <Text >
+        <Text style={styles.timeDisplay}>
           {this.getHours()}:{this.getMinutes()}:{this.getSeconds()}
         </Text>
         
@@ -75,7 +80,7 @@ export default connect(mapStateToProps)(SingleClock);
 
 const styles = StyleSheet.create({
 
-  timeDisplay: {
+  clockDisplay: {
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     padding: 20,
@@ -86,20 +91,22 @@ const styles = StyleSheet.create({
     borderRadius:4,
     marginLeft: "25%",
     marginTop: "25%",
+    marginBottom: "25%"
   },
-  button: {
-
-  },
-  touchable: {
-    height: 40,
-    margin: 10,
+  timeDisplay: {
     borderWidth: 1,
     borderColor: "black",
     borderRadius:4,
-    maxWidth: "33%",    
+    backgroundColor: 'rgba(255,255,255,.4)',
+    fontSize: 24,
+    fontFamily: 'Roboto',
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
-  touchableText: {
-    fontSize: 16,
-    
+  title: {
+    textAlign: 'center',
+    marginBottom: 10
   }
+
+
 })
