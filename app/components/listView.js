@@ -9,7 +9,7 @@ import t from 'tcomb-form-native';
 import { createNewTimer, populateTimer, toggleView } from '../actions';
 
 import Clock from './clock';
-
+import TimeConverter from './timeConverter';
 
 const Form = t.form.Form;
 
@@ -61,7 +61,7 @@ export class ListView extends React.Component{
             />  
           </View>
 
-          <List containerStyle={{marginBottom: 20}}>
+          <List containerStyle={{marginBottom: 40}}>
           {
             this.props.list.map((item, i) => (
             <TouchableOpacity
@@ -70,9 +70,14 @@ export class ListView extends React.Component{
               onPress={() => this.handleItemPress(item.name,item.time)}
             >
               <Text style={styles.listItemName}>{item.name}</Text>
-              <Text style={styles.listItemTime}>{
+              {/* <Text style={styles.listItemTime}>{
                 `${Math.floor(item.time /60 /60).toLocaleString('en')}:${Math.floor(item.time / 60) % 60}:${('0' + item.time % 60).slice(-2)}`
-              }</Text>
+              }</Text> */}
+              <TimeConverter 
+                stateTime={item.time}
+                timeDisplayStyle={styles.timeDisplay}
+              />
+
             </ TouchableOpacity>
             ))
           }
@@ -120,7 +125,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   timerListItem: {
-    backgroundColor: 'pink',
+    backgroundColor:  '#6b9bfa',
     flexDirection: 'row',
     justifyContent: 'space-between',
     maxWidth: "75%",
@@ -132,7 +137,7 @@ const styles = StyleSheet.create({
   listItemName: {
     fontSize: 18
   },
-  listItemTime:{
+  timeDisplay:{
     fontSize: 18
 
   }

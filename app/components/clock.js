@@ -32,7 +32,7 @@ export class Clock extends React.Component {
 
   render(){
     return(
-      <View>
+      <View style={styles.clockPageContainer}>
 
         <SingleClock 
           startTime={this.startTime}
@@ -52,8 +52,11 @@ export default connect()(Clock);
 
 const styles = StyleSheet.create({
 
-  text: {
-    paddingTop: 20,
-  },
+
+  clockPageContainer: {
+    alignItems: 'center',
+    marginTop: "15%",
+    marginBottom: "10%",
+  }
 
 })

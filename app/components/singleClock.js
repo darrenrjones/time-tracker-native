@@ -8,9 +8,10 @@ import {
 
 import { connect} from 'react-redux';
 
-import { Button, Text } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 
 import ClockButton from './clockButton';
+import TimeConverter from './timeConverter';
 
 
 class SingleClock extends Component {
@@ -45,11 +46,15 @@ class SingleClock extends Component {
 
       <View style={styles.clockDisplay}>
 
-        <Text h4 style={styles.title}>{this.props.currentClock.name}</Text>
+        <Text h3 style={styles.title}>{this.props.currentClock.name}</Text>
 
-        <Text style={styles.timeDisplay}>
+        {/* <Text style={styles.timeDisplay}>
           {this.getHours()}:{this.getMinutes()}:{this.getSeconds()}
-        </Text>
+        </Text> */}
+        <TimeConverter 
+          stateTime={this.props.currentClock.time}
+          timeDisplayStyle={styles.timeDisplay}
+        />
         
         <ClockButton 
           name={"Start"}
@@ -81,32 +86,31 @@ export default connect(mapStateToProps)(SingleClock);
 const styles = StyleSheet.create({
 
   clockDisplay: {
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    padding: 20,
-    maxWidth: "50%",
+    justifyContent: 'center',
+    width: 250,
+    height: 250,
     backgroundColor: "pink",
     borderWidth: 3,
     borderColor: "green",
-    borderRadius:4,
-    marginLeft: "25%",
-    marginTop: "25%",
-    marginBottom: "25%"
+    borderRadius: 4,
+    alignItems: 'center',
   },
   timeDisplay: {
     borderWidth: 1,
     borderColor: "black",
     borderRadius:4,
     backgroundColor: 'rgba(255,255,255,.4)',
-    fontSize: 24,
-    fontFamily: 'Roboto',
+    fontSize: 34,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 30,
   },
   title: {
+    
     textAlign: 'center',
-    marginBottom: 10
-  }
+    marginTop: 10,
+    marginBottom: 30,
+  },
+
 
 
 })

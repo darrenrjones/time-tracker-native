@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,    
-    View,    
+    ScrollView,    
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -16,20 +16,20 @@ class Home extends Component {
 
   render(){
     return(
-      <View style={styles.thingy}>
+      <ScrollView style={styles.thingy}>
         <Header
-          centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 22 } }}
+          centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 25 } }}
           rightComponent={{ 
             icon: 'home', 
             color: '#fff',
-            size: 32, 
+            size: 35, 
             underlayColor: '#64b5f6',
             disabled: this.props.currentClock.status,
             onPress: () => {
               if(this.props.clockView){
                 this.props.dispatch(Actions.toggleView());
               }
-            },
+            }
             
           
           }}
@@ -37,7 +37,7 @@ class Home extends Component {
 
         <ListView/>
         
-      </View>
+      </ScrollView>
     )
 
   }
