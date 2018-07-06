@@ -26,3 +26,19 @@ export const TOGGLE_VIEW = 'TOGGLE_VIEW';
 export const toggleView = () => ({
     type: TOGGLE_VIEW       
 });
+export const TOGGLE_DELETE_VIEW = 'TOGGLE_DELETE_VIEW';
+export const toggleDeleteView = () => ({
+    type: TOGGLE_DELETE_VIEW       
+});
+
+export const DELETE_TIMER = 'DELETE_TIMER';
+export const deleteTimer = (index) => ({
+    type: DELETE_TIMER,
+    index   
+});
+export const SET_DELETE_INFO = 'SET_DELETE_INFO';
+export const setDeleteInfo = (index,name) => ({
+    type: SET_DELETE_INFO,
+    index,
+    name   
+});

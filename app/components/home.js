@@ -14,9 +14,12 @@ import { Header } from 'react-native-elements';
 
 class Home extends Component {
 
-  render(){
+  render(){    
+    
     return(
+
       <ScrollView style={styles.thingy}>
+
         <Header
           centerComponent={{ text: 'Time Tracker', style: { color: '#fff', fontSize: 25 } }}
           rightComponent={{ 
@@ -29,9 +32,7 @@ class Home extends Component {
               if(this.props.clockView){
                 this.props.dispatch(Actions.toggleView());
               }
-            }
-            
-          
+            }       
           }}
         />
 

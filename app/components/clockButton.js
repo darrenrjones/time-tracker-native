@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     borderRadius: 4,
-    opacity: 0.3
+    opacity: 0.5
   },
   clockButtonText: {
     fontSize: 18,

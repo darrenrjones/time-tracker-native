@@ -4,10 +4,7 @@ import SingleClock from './singleClock';
 import { startTime, toggleStatus } from '../actions';
 
 import {
-  StyleSheet,
-  FlatList,
   View,
-  Text,    
 } from 'react-native';
 
 export class Clock extends React.Component {
@@ -32,7 +29,7 @@ export class Clock extends React.Component {
 
   render(){
     return(
-      <View style={styles.clockPageContainer}>
+      <View style={{alignItems: 'center', marginTop: "15%", marginBottom: "10%",}}>
 
         <SingleClock 
           startTime={this.startTime}
@@ -47,16 +44,5 @@ export class Clock extends React.Component {
   }
 }
 
-
 export default connect()(Clock);
 
-const styles = StyleSheet.create({
-
-
-  clockPageContainer: {
-    alignItems: 'center',
-    marginTop: "15%",
-    marginBottom: "10%",
-  }
-
-})

@@ -1,22 +1,25 @@
-import { START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER, POPULATE_TIMER, TOGGLE_VIEW, SET_STATUS_FALSE } from '../actions';
+import { START_TIME, TOGGLE_STATUS, CREATE_NEW_TIMER, POPULATE_TIMER, TOGGLE_VIEW, DELETE_TIMER, TOGGLE_DELETE_VIEW, SET_DELETE_INFO } from '../actions';
 
 const initialState = {
   
   list: [
     {
-      name: "clock One",
+      name: "Clock One",
       time: 3599
     },
     {
-      name: "clock Two",
-      time: 159
+      name: "Clock Two",
+      time: 59
     },
     {
-      name: "clock Three",
-      time: 259
+      name: "New Clock",
+      time: 599
     }
   ],
   clockView: false,
+  deleteView: false,
+  deleteIndex: null,
+  deleteName: "",
   currentClock : {
     name: "",
     time: 0,
@@ -28,7 +31,6 @@ const initialState = {
 export default function mainReducer(state=initialState, action) {
 
   if (action.type === START_TIME){
-    // console.log('timer ticked');
     const list = state.list.map(item => {
       if(item.name === state.currentClock.name){
         return {
@@ -49,7 +51,6 @@ export default function mainReducer(state=initialState, action) {
   }
 
   if (action.type === TOGGLE_STATUS){
-    // console.log('status before TOGGLE_STATUS return : ', state.currentClock.status);
     return {
       ...state,
       currentClock: {...state.currentClock, status: !state.currentClock.status}
@@ -57,7 +58,6 @@ export default function mainReducer(state=initialState, action) {
   }
 
   if (action.type === CREATE_NEW_TIMER){
-    // console.log('timer created : ', action.name);
     return {
       ...state, 
       list: [...state.list,{name: action.name, time: 0}]     
@@ -65,7 +65,6 @@ export default function mainReducer(state=initialState, action) {
   }
 
   if (action.type === POPULATE_TIMER){
-    // console.log(action.name,action.time);    
     return {
       ...state, 
       currentClock: 
@@ -81,9 +80,32 @@ export default function mainReducer(state=initialState, action) {
     return{
       ...state,
       clockView: !state.clockView
-    }
+    }   
+  }
 
-    
+  if(action.type === TOGGLE_DELETE_VIEW){
+    return {
+      ...state,
+      deleteView: !state.deleteView
+    }
+  }
+
+  if (action.type === DELETE_TIMER){
+    return{
+      ...state,
+      list: [
+        ...state.list.slice(0, action.index),
+        ...state.list.slice(action.index + 1)
+      ]   
+    }   
+  }
+
+  if (action.type === SET_DELETE_INFO){
+    return{
+      ...state,
+      deleteIndex: action.index,
+      deleteName: action.name 
+    }   
   }
 
   return state;

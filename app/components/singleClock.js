@@ -13,6 +13,7 @@ import { Text } from 'react-native-elements';
 import ClockButton from './clockButton';
 import TimeConverter from './timeConverter';
 
+import stylesfile from './stylesfile';
 
 class SingleClock extends Component {
 
@@ -44,13 +45,10 @@ class SingleClock extends Component {
 
     return(
 
-      <View style={styles.clockDisplay}>
+      <View elevation={5} style={[styles.clockDisplay, stylesfile.shadow]}>
 
         <Text h3 style={styles.title}>{this.props.currentClock.name}</Text>
 
-        {/* <Text style={styles.timeDisplay}>
-          {this.getHours()}:{this.getMinutes()}:{this.getSeconds()}
-        </Text> */}
         <TimeConverter 
           stateTime={this.props.currentClock.time}
           timeDisplayStyle={styles.timeDisplay}
@@ -67,8 +65,6 @@ class SingleClock extends Component {
           click={this.props.stopTime}
           disabled={!this.props.currentClock.status}
         />
-  
-
 
       </View>
 
@@ -87,13 +83,12 @@ const styles = StyleSheet.create({
 
   clockDisplay: {
     justifyContent: 'center',
-    width: 250,
-    height: 250,
-    backgroundColor: "pink",
-    borderWidth: 3,
-    borderColor: "green",
-    borderRadius: 4,
     alignItems: 'center',
+    width: 250,
+    height: 250,    
+    backgroundColor: "pink",
+    borderRadius: 2
+    
   },
   timeDisplay: {
     borderWidth: 1,
